@@ -10,14 +10,14 @@ Follow the instructions below to setup the project quickly:
 -   Run ``cd qtec-task``
 -   Run ``composer install`` command
 -   Run ``yarn install`` or ``npm install`` command
--   Run ``cp .env.example .env`` command
+-   Run ``copy .env.example .env`` command
 -   Setup your database and update ``.env`` file accordingly
 -   Run ``php artisan migrate`` command
 -   Run ``php artisan db:seed`` command
 -   Run ``php artisan key:generate`` command
 -   Run ``php artisan serve`` command
 -   Run ``yarn dev`` or ``npm run dev`` command (Start the Vite development server)
--   Done
+-   Login as admin (email:admin@qtec.test.....pass:123456)
 
 *******************
 Release Information
