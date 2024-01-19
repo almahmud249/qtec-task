@@ -7,7 +7,7 @@ Project setup
 Follow the instructions below to setup the project quickly:
 
 -   Clone the repo: ``git clone https://github.com/almahmud249/qtec-task.git``
--   Run ``cd qtect-task``
+-   Run ``cd qtec-task``
 -   Run ``composer install`` command
 -   Run ``yarn install`` or ``npm install`` command
 -   Run ``cp .env.example .env`` command
