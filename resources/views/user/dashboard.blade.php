@@ -49,19 +49,34 @@
             var container = $('#dynamicFieldsContainer');
             container.empty();
             $.each(fieldsArray.result, function (index, field) {
-                console.log(field)
-                var newRowHtml =
-                    '<div class="common_input mb-5 col-md-3">' +
-                    '<label for="dynamicField_' + index + '">' + field.label + '</label>' +
-                    '<input type="'+ field.type +'" class="form-control" id="dynamicField_' + index + '" name="fields[' + index + ']['+ field.label +']" placeholder="' + field.label + '" value="" required>' +
-                    '</div>';
-                container.append(newRowHtml);
+                if(field.type != 'radio' && field.type != 'checkbox' && field.type != 'submit' && field.type != 'button'){
+                    var newRowHtml =
+                        '<div class="common_input mb-5 col-md-3">' +
+                        '<label for="dynamicField_' + index + '">' + field.label + '</label>' +
+                        '<input type="'+ field.type +'" class="form-control" id="dynamicField_' + index + '" name="fields[' + index + ']['+ field.label +']" placeholder="' + field.label + '" value="" required>' +
+                        '</div>';
+                    container.append(newRowHtml);
+                }
+                else if(field.type === 'radio' || field.type === 'checkbox'){
+                    var RadioCheckbox =
+                        '<div class="common_input mb-5 col-md-3">' +
+                        '<label for="dynamicField_' + index + '" class="title-color mb-0"">' + field.label + '</label>' +
+                        '<input type="'+ field.type +'" class="nn_input" id="dynamicField_' + index + '" name="fields[' + index + ']['+ field.label +']" placeholder="' + field.label + '" value="male">' +
+                        '<label for="dynamicField_' + index + '" class="title-color mb-0"">' + 'Male' + '</label>' +
+                        '<input type="'+ field.type +'" class="nn_input" id="dynamicField_' + index + '" name="fields[' + index + ']['+ field.label +']" placeholder="' + field.label + '" value="female">' +
+                        '<label for="dynamicField_' + index + '" class="title-color mb-0"">' + 'FeMale' + '</label>' +
+                        '</div>';
+                    container.append(RadioCheckbox);
+                }
+                if(field.type == 'submit' || field.type == 'button'){
+                    container.append(
+                        '<div class="common_input col-md-3 mt-7">' +
+                        '<div class="text-center"><button class="btn btn-primary btn-lg mx-auto mx-lg-0 ms-lg-auto" id="submitButton">Submit</button></div>' +
+                        '</div>'
+                    );
+                }
             });
-            container.append(
-                '<div class="common_input col-md-3 mt-7">' +
-                '<div class="text-center"><button class="btn btn-primary btn-lg mx-auto mx-lg-0 ms-lg-auto" id="submitButton">Submit</button></div>' +
-                '</div>'
-        );
+
         }
     </script>
 @endpush

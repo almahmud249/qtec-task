@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div style="height: 100vh;" class="body_wraper p-md-5 p-3 ">
+    <div class="body_wraper p-md-5 p-3 ">
         <div class="table_responsive">
             <table>
                 <thead>

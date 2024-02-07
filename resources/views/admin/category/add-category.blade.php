@@ -10,6 +10,7 @@
                             <input class="nn_input"
                                    placeholder="Enter category name..."
                                    type="text" name="name">
+                            <x-input-error style="color:red" :messages="$errors->get('name')" class="mt-2" />
                         </div>
                         <div class="common_input mb-5 col-md-6">
                             <label for>Description</label>

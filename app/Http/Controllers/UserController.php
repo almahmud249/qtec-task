@@ -34,33 +34,32 @@ class UserController extends Controller
 
     public function submitForm(Request $request)
     {
-        $modifiedFields = [];
+        $modifiedFields = $request->fields;
+        $file_fields = FormField::where('category_id', $request->category_id)->first();
 
-        foreach ($request->fields as $key => $field) {
-            if (isset($field['image'])) {
-                $imagePath = $field['image']->store('images', 'public');
-                $imageName = $field['image']->getClientOriginalName();
-
-                // Add image name to the specific field in the modified array
-                $field['image'] = $imageName;
+        foreach ($file_fields->form_data as $key => $field) {
+            $type = trim($field['type']);
+            if ($type == 'file') {
+                foreach ($modifiedFields as $i => $subArray) {
+                    if (array_key_exists($field['label'], $subArray)) {
+                        $imageName = $subArray[$field['label']]->getClientOriginalName();
+                        $subArray[$field['label']] = $imageName;
+                        $modifiedFields[$i] = $subArray;
+                    }
+                }
             }
-
-            // Add the modified field to the new array
-            $modifiedFields[$key] = $field;
         }
-        // Continue with the rest of your logic
         UserFormData::create([
             'user_id' => \auth()->user()->id,
             'category_id' => $request->category_id,
             'value' => $modifiedFields,
         ]);
-
         return redirect()->back();
     }
 
     public function list()
     {
-        $all_data = User::with('userFormData','userFormData.category')->where('id', \auth()->user()->id)->first();
+        $all_data = User::with('userFormData', 'userFormData.category')->where('id', \auth()->user()->id)->first();
         return view('user.index', compact('all_data'));
     }
 }

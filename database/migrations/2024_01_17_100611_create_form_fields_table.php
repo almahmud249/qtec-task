@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('form_fields', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->string('form_data');
+            $table->text('form_data');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

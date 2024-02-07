@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
     {
         //Create the superadmin user
         $superadmin = User::factory()->create([
-            'email' => 'admin@qtec.test',
+            'email' => 'admin@steadfast.test',
             'password' => '123456',
         ]);
 

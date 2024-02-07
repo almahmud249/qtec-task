@@ -481,7 +481,6 @@ body {
 .table_responsive {
   width: 100%;
   overflow: auto !important;
-  max-height: 600px;
 }
 .table_responsive::-webkit-scrollbar {
   width: 0px !important;

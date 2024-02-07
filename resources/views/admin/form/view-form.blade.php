@@ -12,10 +12,23 @@
                                 <label class="title-color mb-0" for="seller_pos1">
                                     Male
                                 </label>
-                                <input class="nn_input" name="seller_pos" type="radio" value="0" id="seller_pos2" checked="">
+                                <input class="nn_input" name="seller_pos" type="{{$field['type']}}" value="0" id="seller_pos2" checked="">
                                 <label class="title-color mb-0" for="seller_pos2">
                                     Female
                                 </label>
+                        @elseif($field['type'] == 'checkbox')
+                            <input class="nn_input" name="seller_pos" type="{{$field['type']}}" value="1" id="seller_pos1">
+                            <label class="title-color mb-0" for="seller_pos1">
+                                HTML
+                            </label>
+                            <input class="nn_input" name="seller_pos" type="{{$field['type']}}" value="0" id="seller_pos2" checked="">
+                            <label class="title-color mb-0" for="seller_pos2">
+                                CSS
+                            </label>
+                            <input class="nn_input" name="seller_pos" type="{{$field['type']}}" value="0" id="seller_pos2" checked="">
+                            <label class="title-color mb-0" for="seller_pos2">
+                                JavaScript
+                            </label>
                         @else
                             <input class="nn_input"
                                    placeholder="Enter {{$field['label']}}"
